@@ -17,11 +17,19 @@
     }
   }
 
+
+
+
+
   function random(min,max){
 
     // Very interesting way to random (Math.random() return 0 -0.999)
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
+
+
+
+
 
   function createSnowBalls(canvas, numberOfSnowBalls){
 
@@ -44,6 +52,9 @@
     });
   }
 
+
+
+
   function drawSnowBall(canvasContext, snowBall){
 
     // While we need to draw, we are drawing in the 2d obj
@@ -60,7 +71,10 @@
     canvasContext.fill();
   }
 
-  function moveSnowBall(canva, snowBall){
+
+
+
+  function moveSnowBall(canvas, snowBall){
     snowBall.x +=snowBall.speedX;
     snowBall.y +=snowBall.speedY;
 
@@ -78,6 +92,9 @@
     } 
   }
 
+
+
+  
   function run(){
 
     // Destructuring returned values
