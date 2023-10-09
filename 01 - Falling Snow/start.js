@@ -35,7 +35,11 @@
 
         // This will return obj that contain x,y coordinate of snow
         x:random(0,canvas.width),
-        y:random(0,canvas.height)
+        y:random(0,canvas.height),
+        opacity: random(0.5, 1),
+        radius: random(2,4),
+        speedX: random(-5,5),
+        speedY: random(1,3)
       };
     });
   }
@@ -47,13 +51,31 @@
     canvasContext.beginPath();
 
     // Function to draw a circle (x , y , r , start from 0 rad, end at 2pi)
-    canvasContext.arc(snowBall.x,snowBall.y, 4, 0, 2 * Math.PI );
+    canvasContext.arc(snowBall.x,snowBall.y, snowBall.radius, 0, 2 * Math.PI );
 
     // Set style rgba(red, green, blue, alpha(opacity)) used to fill the drawing
-    canvasContext.fillStyle = `rgba(255,255,255,1)`;
+    canvasContext.fillStyle = `rgba(255,255,255,${snowBall.opacity})`;
 
     // Fills the current path
     canvasContext.fill();
+  }
+
+  function moveSnowBall(canva, snowBall){
+    snowBall.x +=snowBall.speedX;
+    snowBall.y +=snowBall.speedY;
+
+    // if the snowball fall to the right side reset the left most
+    if (snowBall.x > canvas.width) {
+      snowBall.x = 0;
+
+    // else set to the right most
+    } else if (snowBall.x < 0){
+      snowBall.x = canvas.width;
+    }
+
+    if (snowBall.y > canvas.height){
+      snowBall.y = 0;
+    } 
   }
 
   function run(){
@@ -62,8 +84,16 @@
     const{canvas, canvasContext, numberOfSnowBalls} = setup();
     const snowBalls = createSnowBalls(canvas,numberOfSnowBalls);
 
-    //Iterate snowBalls array and pass obj literal(dict in python but access by using ".")
-    snowBalls.forEach((snowBall) => drawSnowBall(canvasContext, snowBall))
+    // Iterate snowBalls array and pass obj literal(dict in python but access by using ".")
+    // forEach() method calls a function for each element in an array.
+    snowBalls.forEach((snowBall) => drawSnowBall(canvasContext, snowBall));
+
+    // setInterval(function, milliseconds) loop every milliseconds
+    setInterval (() => {
+      canvasContext.clearRect(0, 0, canvas.width, canvas.height)
+      snowBalls.forEach((snowBall) => drawSnowBall(canvasContext,snowBall));
+      snowBalls.forEach((snowBall) => moveSnowBall(canvas, snowBall));
+    }, 50)
   }
   run();
 })();
