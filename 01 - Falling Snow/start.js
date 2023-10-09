@@ -32,6 +32,8 @@
 
       //  () => {} use anonymous function that take no parameters to return x and y
       return{
+
+        // This will return obj that contain x,y coordinate of snow
         x:random(0,canvas.width),
         y:random(0,canvas.height)
       };
@@ -46,7 +48,11 @@
 
     // Function to draw a circle (x , y , r , start from 0 rad, end at 2pi)
     canvasContext.arc(snowBall.x,snowBall.y, 4, 0, 2 * Math.PI );
+
+    // Set style rgba(red, green, blue, alpha(opacity)) used to fill the drawing
     canvasContext.fillStyle = `rgba(255,255,255,1)`;
+
+    // Fills the current path
     canvasContext.fill();
   }
 
