@@ -9,23 +9,23 @@
   let thisYear = new Date().getFullYear();
 
 
-  function setElementInnerText(id, text){
+  function setElementInnerText(id, text) {
     const element = document.getElementById(id);
     element.innerHTML = text;
 
   }
-  
+
   function countDown() {
     const now = new Date().getTime();
-    const newYear = new Date(`Decomber 31 ,${thisYear} 23:59:59`).getTime();
+    const newYear = new Date(`Decomber 31 , ${thisYear} 23:59:59`).getTime();
     const unixTimeLeft = newYear - now;
-    
+
     // const daysElem = document.getElementById('days');
     // daysElem.innerHTML = Math.floor(unixTimeLeft / DAY)
-    setElementInnerText('days',  Math.floor(unixTimeLeft / DAY));
-    setElementInnerText('hours', Math.floor(unixTimeLeft % DAY / HOUR)); 
+    setElementInnerText('days', Math.floor(unixTimeLeft / DAY));
+    setElementInnerText('hours', Math.floor(unixTimeLeft % DAY / HOUR));
     setElementInnerText('minutes', Math.floor(unixTimeLeft % HOUR / MINUTE));
-    setElementInnerText('seconds',Math.floor(unixTimeLeft % MINUTE / SECOND));
+    setElementInnerText('seconds', Math.floor(unixTimeLeft % MINUTE / SECOND));
 
   }
   function run() {
