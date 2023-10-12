@@ -18,9 +18,6 @@
   }
 
 
-
-
-
   function random(min,max){
 
     // Very interesting way to random (Math.random() return 0 -0.999)
