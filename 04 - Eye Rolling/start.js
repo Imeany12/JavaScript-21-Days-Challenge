@@ -11,11 +11,14 @@ function run(){
       const {left , top} = eyeElem.getBoundingClientRect();
 
       // Get the center of the eye by adding width and height of the eye and divide by 2
+      // .offsetWidth will return the width of the element
+      // .offsetHeight will return the height of the element
       const eyeCenterX = left + eyeElem.offsetWidth / 2;
       const eyeCenterY = top + eyeElem.offsetHeight / 2;
 
       // Function to calcualte radian 
       // PageX = cordiate of cursor / eyeCenter = cordinate of eye 
+      // Math.atan2 will return the arc tangent of y/x in radians
       const radian = Math.atan2(pageX - eyeCenterX, pageY - eyeCenterY);
 
       // Start off position is at the bottom so -1 will start at the bottom
