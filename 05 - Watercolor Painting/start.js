@@ -27,6 +27,8 @@
     context.lineCap = 'round';
     context.lineJoin = 'round';
     const distance = getDistance(previousPoint, currentPoint);
+
+    // If the distance increase the width of the line will be thinner
     context.lineWidth = Math.random() / distance * 40;
 
     const opacity = Math.min(0.5, 1 / distance);
