@@ -21,6 +21,8 @@
   function random(min,max){
 
     // Very interesting way to random (Math.random() return 0 -0.999)
+    // max - min + 1  = interval within max and min
+    // We will surely get value starting from min to min + interval (max)
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
