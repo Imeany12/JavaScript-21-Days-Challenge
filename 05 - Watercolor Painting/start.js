@@ -31,6 +31,7 @@
     // If the distance increase the width of the line will be thinner
     context.lineWidth = Math.random() / distance * 40;
 
+    // The opacity will not be less than 0.5 if the distance is so big
     const opacity = Math.min(0.5, 1 / distance);
     context.strokeStyle = `rgba(222, 10, 109, ${opacity})`;
 
@@ -46,6 +47,7 @@
     // Done drawing
     context.closePath();
 
+    // Set new current point so that the previous point and the current point will make a line
     previousPoint = currentPoint;
     }
 
